@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGear - Gaming Accessories Redefined</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #B4121B;
+            --red-bright: #e01520;
+            --red-dim: #7a0c12;
+            --red-glow: rgba(180, 18, 27, 0.5);
+            --black: #000000;
+            --bg-dark: #0a0000;
+            --bg-card: #110000;
+            --white: #ffffff;
+            --gray-light: #d0cccc;
+            --gray-mid: #888;
+            --border: rgba(180, 18, 27, 0.35);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--black);
+            color: var(--gray-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .heading-font {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0000; }
+        ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--red-bright); }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--red);
+            z-index: 1000;
+            padding: 0.9rem 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .logo-svg {
+            width: 38px;
+            height: 38px;
+            filter: drop-shadow(0 0 8px var(--red));
+        }
+
+        .logo-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span { color: var(--red); }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover { color: var(--white); }
+        nav a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1.4rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+        }
+
+        .nav-cta:hover {
+            background: var(--red-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--red-glow);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            margin-top: 68px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1587829191301-2f759ecc1e3c?q=80&w=1600&fit=crop') center/cover no-repeat, url('https://images.unsplash.com/photo-1625948515291-69613efd103f?q=80&w=1600&fit=crop') center/cover no-repeat;
+            background-blend-mode: overlay;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.68));
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(180,18,27,0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180,18,27,0.12) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(180,18,27,0.35) 0%, transparent 70%);
+            z-index: 1;
+            animation: pulse 6s ease-in-out infinite;
+            box-shadow: 0 0 100px rgba(180,18,27,0.4), inset 0 0 80px rgba(180,18,27,0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-eyebrow {
+            text-shadow:0 0 12px rgba(0,0,0,.8);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .hero h1 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.7s ease-out 0.1s both;
+        }
+
+        .hero h1 .accent {
+            color: #ff4040;
+            text-shadow: 0 0 40px rgba(180,18,27,0.6);
+        }
+
+        .hero p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-weight: 300;
+            color: #e6e6e6;
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.7s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.7s ease-out 0.3s both;
+        }
+
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover {
+            background: var(--red-bright);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px var(--red-glow);
+        }
+
+        .btn-secondary {
+            display: none;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 1rem 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stats {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(180,18,27,0.08);
+            border-top: 1px solid var(--border);
+            justify-content: center;
+            gap: 4rem;
+            padding: 1.2rem 2rem;
+            z-index: 3;
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            color: #c9c9c9;
+            text-transform: uppercase;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .accent { color: var(--red); }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            font-size: 0.85rem;
+            color: #c9c9c9;
+            letter-spacing: 1px;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== CATEGORY TABS ===== */
+        .category-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            border-right: 1px solid var(--border);
+            color: #c9c9c9;
+            padding: 1rem 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-btn:last-child { border-right: none; }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--red);
+            transition: width 0.3s ease;
+        }
+
+        .tab-btn:hover { color: var(--white); }
+        .tab-btn:hover::after { width: 100%; }
+
+        .tab-btn.active {
+            color: var(--red);
+            background: rgba(180,18,27,0.1);
+        }
+
+        .tab-btn.active::after { width: 100%; }
+
+        /* ===== PRODUCT PANELS ===== */
+        .product-panels {
+            position: relative;
+        }
+
+        .product-panel {
+            display: none;
+        }
+
+        .product-panel.active {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        /* ===== PRODUCT GRID ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* ===== PRODUCT CARD ===== */
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto auto auto;
+            gap: 1rem 1.2rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--red);
+            box-shadow: 0 0 25px var(--red-glow);
+            transform: translateY(-4px);
+        }
+
+        .product-icon {
+            display: none;
+        }
+
+        /* Product Image Gallery */
+        .product-image-gallery {
+            grid-column: 1;
+            grid-row: 1 / 4;
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-main img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-thumbnails {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .gallery-thumb {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: 1px solid rgba(180,18,27,0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .gallery-thumb.active {
+            background: var(--red);
+            transform: scale(1.3);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: var(--white);
+            border: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 11;
+        }
+
+        .gallery-nav:hover {
+            background: var(--red);
+        }
+
+        .gallery-prev { left: 8px; }
+        .gallery-next { right: 8px; }
+
+        .product-name {
+            grid-column: 1;
+            grid-row: 4;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-desc {
+            grid-column: 1;
+            grid-row: 5;
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .product-specs {
+            grid-column: 1;
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .spec-tag {
+            background: rgba(180,18,27,0.2);
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 0.25rem 0.7rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+        }
+
+        .product-price {
+            grid-column: 1;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .currency { font-size: 0.9rem; }
+
+        .product-btn {
+            grid-column: 1;
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 0.7rem 1.2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+        }
+
+        .product-btn:hover {
+            background: var(--red-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--red-glow);
+        }
+
+        
+.gallery-thumbnails img{
+width:45px;
+height:45px;
+object-fit:cover;
+border:2px solid rgba(255,255,255,.3);
+border-radius:6px;
+cursor:pointer;
+}
+.gallery-thumb.active img{
+border-color:#B4121B;
+transform:scale(1.05);
+}
+
+/* ===== FEATURES ===== */
+        .features-wrap {
+            background: rgba(180,18,27,0.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .feature-item {
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover { background: rgba(180,18,27,0.08); }
+
+        .feature-icon {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #e6e6e6;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--red);
+            box-shadow: 0 0 20px var(--red-glow);
+            transform: translateY(-4px);
+        }
+
+        .rating {
+            color: var(--red);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.8rem;
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #050000;
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            line-height: 1.8;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: #c9c9c9;
+            margin-bottom: 1.5rem;
+            max-width: 280px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .social-icon:hover {
+            border-color: var(--red);
+            background: rgba(180,18,27,0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            display: block;
+            font-size: 0.8rem;
+            color: #c9c9c9;
+            text-decoration: none;
+            margin-bottom: 0.7rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover { color: var(--red); }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HAMBURGER MENU ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--gray-light);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.98);
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            z-index: 999;
+            border-top: 2px solid var(--red);
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-nav-link {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav-link:hover { color: var(--white); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            nav { display: none; }
+
+            .hero-stats { gap: 2rem; font-size: 0.9rem; }
+            .stat-num { font-size: 1.2rem; }
+
+            .category-tabs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tab-btn {
+                border-right: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                padding: 0.9rem 0.5rem;
+                font-size: 0.68rem;
+            }
+
+            .tab-btn:nth-child(2) { border-right: none; }
+            .tab-btn:nth-child(3) { border-bottom: none; }
+            .tab-btn:nth-child(4) { border-right: none; border-bottom: none; }
+
+            .product-card {
+                grid-template-columns: 80px 1fr;
+                gap: 0.8rem 1rem;
+                padding: 1.1rem;
+            }
+
+            .product-image-gallery { aspect-ratio: 16 / 9; }
+
+            .features-grid { grid-template-columns: 1fr; }
+            .feature-item { border-right: none; border-bottom: 1px solid var(--border); }
+
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-brand { grid-column: 1; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
+
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 280px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+            .section { padding: 3rem 1rem; }
+            .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+        }
+
+        /* Loading state */
+        .img-loading {
+            background: linear-gradient(90deg, rgba(180,18,27,0.2), rgba(180,18,27,0.1), rgba(180,18,27,0.2));
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ===== PRODUCT MODAL ===== */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 2px solid var(--red);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--red-bright);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 3rem;
+        }
+
+        .modal-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(180, 18, 27, 0.05);
+            border: 1px solid var(--border);
+            min-height: 400px;
+            position: sticky;
+            top: 0;
+        }
+
+        .modal-image img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .modal-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-details h2 {
+            font-size: 2rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .modal-price-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .modal-price {
+            font-size: 2.5rem;
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .currency {
+            font-size: 1.5rem;
+        }
+
+        .modal-rating {
+            color: var(--red);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .modal-description {
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .modal-specs {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-specs .spec-tag {
+            background: rgba(180, 18, 27, 0.2);
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .modal-features {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-features h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .modal-features li {
+            color: #e6e6e6;
+            font-size: 0.9rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-add-cart,
+        .btn-buy-now {
+            flex: 1;
+            padding: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+        }
+
+        .btn-add-cart {
+            background: transparent;
+            color: var(--red);
+            border: 2px solid var(--red);
+        }
+
+        .btn-add-cart:hover {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: 0 0 20px var(--red-glow);
+        }
+
+        .btn-buy-now {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .btn-buy-now:hover {
+            background: var(--red-bright);
+            box-shadow: 0 8px 25px var(--red-glow);
+            transform: translateY(-2px);
+        }
+
+        .modal-shipping {
+            background: rgba(180, 18, 27, 0.1);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 2px;
+        }
+
+        .modal-shipping p {
+            color: #e6e6e6;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .modal-shipping p::before {
+            margin-right: 0.5rem;
+            color: var(--red);
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+
+            .modal-image {
+                min-height: 300px;
+                position: static;
+            }
+
+            .modal-image img {
+                max-height: 300px;
+            }
+
+            .modal-details h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-price {
+                font-size: 1.8rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+    
+.login-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:3000;justify-content:center;align-items:center}
+.login-box{background:#111;padding:30px;border:1px solid #B4121B;width:350px}
+.login-box input{width:100%;margin:10px 0;padding:10px;background:black;color:white;border:1px solid #B4121B}
+
+/* Cart Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal.active {
+    display: flex;
+}
+
+.cart-modal-content {
+    background: linear-gradient(135deg, #110000 0%, #0a0000 100%);
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(180,18,27,0.5);
+}
+
+.cart-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-modal-header h2 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.cart-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgba(180,18,27,0.3);
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    background: rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    background: rgba(180,18,27,0.1);
+    border-color: var(--red);
+}
+
+.cart-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--red);
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    color: var(--white);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+}
+
+.cart-item-price {
+    color: var(--red);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--red);
+    border-radius: 4px;
+    padding: 0.3rem;
+}
+
+.cart-item-quantity button {
+    background: transparent;
+    color: var(--red);
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.cart-item-quantity button:hover {
+    color: var(--red-bright);
+    transform: scale(1.2);
+}
+
+.cart-item-quantity span {
+    color: var(--white);
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cart-remove-btn {
+    background: transparent;
+    color: #e6e6e6;
+    border: 1px solid #666;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.cart-remove-btn:hover {
+    background: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+}
+
+.cart-total {
+    padding: 1rem;
+    border-top: 2px solid var(--red);
+    text-align: right;
+    color: var(--white);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.cart-modal-footer {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.cart-checkout-btn, .cart-clear-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-checkout-btn {
+    background: var(--red);
+    color: var(--white);
+}
+
+.cart-checkout-btn:hover {
+    background: var(--red-bright);
+    box-shadow: 0 8px 20px var(--red-glow);
+}
+
+.cart-clear-btn {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid #666;
+}
+
+.cart-clear-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+@media (max-width: 768px) {
+    .cart-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .cart-item {
+        flex-wrap: wrap;
+    }
+    
+    .cart-item-quantity {
+        order: 4;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="main-header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B4121B"/>
+                            <stop offset="100%" style="stop-color:#7a0c12"/>
+                        </linearGradient>
+                    </defs>
+                    <polygon points="30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30" fill="none" stroke="url(#logoGrad)" stroke-width="4"/>
+                    <polygon points="35,20 65,20 80,35 80,65 65,80 35,80 20,65 20,35" fill="url(#logoGrad)" opacity="0.3"/>
+                    <text x="50" y="58" text-anchor="middle" font-family="monospace" font-weight="700" font-size="26" fill="#ffffff">N</text>
+                </svg>
+                <span class="logo-text">NEX<span>GEAR</span></span>
+            </div>
+            <nav>
+                <a href="#products">Products</a>
+                <a href="#features">Features</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+                <button class="nav-cta" onclick="openLogin()">Login</button><button class="nav-cta" id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
+            </nav>
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#products" class="mobile-nav-link">Products</a>
+        <a href="#features" class="mobile-nav-link">Features</a>
+        <a href="#reviews" class="mobile-nav-link">Reviews</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <button class="nav-cta">Shop Now</button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">// Pro Gaming Hardware //</p>
+            <h1>Gear Built<br>For <span class="accent">Victory</span></h1>
+            <p>Premium gaming accessories engineered for champions. Zero compromise on speed, precision, or durability.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Collection</button>
+                <button class="btn-secondary" onclick="openLogin()">Login</button>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-num">4K+</span>
+                <span class="stat-label">Products Sold</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">0.1ms</span>
+                <span class="stat-label">Response Time</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">2 Yr</span>
+                <span class="stat-label">Warranty</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">24/7</span>
+                <span class="stat-label">Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="products-section">
+        <div class="section">
+            <p class="hero-eyebrow" style="margin-bottom:0.5rem;">// Gaming Lineup //</p>
+            <h2 class="section-title">Premium <span class="accent">Accessories</span></h2>
+            <div class="section-line"></div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="tab-btn active" data-tab="keyboards" aria-selected="true">⌨️ Keyboards</button>
+                <button class="tab-btn" data-tab="mice" aria-selected="false">🖱️ MOUSE</button>
+                <button class="tab-btn" data-tab="headphones" aria-selected="false">🎧 Headphones</button>
+                <button class="tab-btn" data-tab="monitors" aria-selected="false">🖥️ Monitors</button>
+            </div>
+
+            <!-- Product Panels -->
+            <div class="product-panels">
+                <!-- KEYBOARDS Panel -->
+                <div id="tab-keyboards" class="product-panel active">
+                    <div class="products-grid">
+                        <!-- Razer Huntsman -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="./razer-huntsman-1.png" alt="Razer Huntsman - Top View" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">Razer Huntsman</h3>
+                            <p class="product-desc">Ultra-fast optical switches with 1.0mm actuation point for responsive gaming. Premium RGB lighting with 16.8M color customization and mechanical precision engineering.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Optical Switches</span>
+                                <span class="spec-tag">1ms Response</span>
+                                <span class="spec-tag">RGB Chroma</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>199.99</div>
+                            <button class="product-btn" onclick="openProductModal('Razer Huntsman')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- SteelSeries Apex -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1595225476933-018acacba519?w=400&h=400&fit=crop" alt="SteelSeries Apex - Front" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">SteelSeries Apex Pro</h3>
+                            <p class="product-desc">Premium mechanical keyboard with adjustable actuation. Per-key RGB and proven esports pedigree.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Mechanical</span>
+                                <span class="spec-tag">Adjustable</span>
+                                <span class="spec-tag">Pro Tested</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>229.99</div>
+                            <button class="product-btn" onclick="openProductModal('SteelSeries Apex Pro')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- ASUS ROG Strix -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1587873882287-04a56c3eeafb?w=400&h=400&fit=crop" alt="ASUS ROG Strix - Front" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">ASUS ROG Strix Scope</h3>
+                            <p class="product-desc">Competition-grade mechanical keyboard with stabilizer-equipped spacebar. Cherry MX switches with aura sync lighting.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Cherry MX</span>
+                                <span class="spec-tag">Stabilized</span>
+                                <span class="spec-tag">Aura Sync</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>189.99</div>
+                            <button class="product-btn" onclick="openProductModal('ASUS ROG Strix Scope')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MICE Panel -->
+                <div id="tab-mice" class="product-panel">
+                    <div class="products-grid">
+                        <!-- Razer DeathAdder -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop" alt="Razer DeathAdder - Top" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">Razer DeathAdder V3</h3>
+                            <p class="product-desc">Ultra-lightweight ergonomic gaming mouse. Hyperspeed wireless with 90-hour battery and 30k DPI sensor.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">63g Weight</span>
+                                <span class="spec-tag">90h Battery</span>
+                                <span class="spec-tag">30k DPI</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>129.99</div>
+                            <button class="product-btn" onclick="openProductModal('Razer DeathAdder V3')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- SteelSeries Rival -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop" alt="SteelSeries Rival - Top" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">SteelSeries Rival 5</h3>
+                            <p class="product-desc">Ergonomic right-handed mouse with 18k CPI sensor. OLED display and programmable buttons for competitive advantage.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">18k CPI</span>
+                                <span class="spec-tag">OLED Display</span>
+                                <span class="spec-tag">Wired</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>79.99</div>
+                            <button class="product-btn" onclick="openProductModal('SteelSeries Rival 5')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- ASUS ROG Chakram -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop" alt="ASUS ROG Chakram - Top" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">ASUS ROG Chakram Core</h3>
+                            <p class="product-desc">Hybrid gaming mouse with wired + wireless modes. Joystick-like thumbstick with 16k DPI sensor and AuraSync.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Hybrid</span>
+                                <span class="spec-tag">16k DPI</span>
+                                <span class="spec-tag">Joystick</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>59.99</div>
+                            <button class="product-btn" onclick="openProductModal('ASUS ROG Chakram Core')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HEADPHONES Panel -->
+                <div id="tab-headphones" class="product-panel">
+                    <div class="products-grid">
+                        <!-- SteelSeries Arctis -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop" alt="SteelSeries Arctis - Side" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">SteelSeries Arctis 9</h3>
+                            <p class="product-desc">Dual wireless headset for PC + PlayStation. Noise-cancelling mic and 30-hour battery. ChatMix dial for perfect balance.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Dual Wireless</span>
+                                <span class="spec-tag">30h Battery</span>
+                                <span class="spec-tag">Noise Cancel</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>349.99</div>
+                            <button class="product-btn" onclick="openProductModal('SteelSeries Arctis 9')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- Razer Barracuda Pro -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop" alt="Razer Barracuda Pro - Side" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">Razer Barracuda Pro</h3>
+                            <p class="product-desc">Lightweight wireless with ultra-low latency 2.4GHz connection. Immersive sound and 50-hour battery life.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">2.4GHz Wireless</span>
+                                <span class="spec-tag">50h Battery</span>
+                                <span class="spec-tag">210g</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>299.99</div>
+                            <button class="product-btn" onclick="openProductModal('Razer Barracuda Pro')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- Audeze Maxwell -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop" alt="Audeze Maxwell - Side" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">Audeze Maxwell</h3>
+                            <p class="product-desc">Audiophile-grade planar magnetic gaming headset with low-latency 2.4GHz wireless and 80h battery.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">Planar Mag</span>
+                                <span class="spec-tag">80h Battery</span>
+                                <span class="spec-tag">2.4GHz</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>299.99</div>
+                            <button class="product-btn" onclick="openProductModal('Audeze Maxwell')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MONITORS Panel -->
+                <div id="tab-monitors" class="product-panel">
+                    <div class="products-grid">
+                        <!-- ASUS ROG Swift -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop" alt="ASUS ROG Swift - Front" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">ASUS ROG Swift 360Hz</h3>
+                            <p class="product-desc">27" 360Hz IPS panel with DisplayHDR 600. NVIDIA G-Sync and AuraSync lighting for ultimate competitive edge.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">360Hz IPS</span>
+                                <span class="spec-tag">1440p</span>
+                                <span class="spec-tag">G-Sync</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>799.99</div>
+                            <button class="product-btn" onclick="openProductModal('ASUS ROG Swift 360Hz')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- ViewSonic Elite -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop" alt="ViewSonic Elite - Front" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">ViewSonic Elite XG270QG</h3>
+                            <p class="product-desc">27" 165Hz IPS gaming monitor. 1ms response time with FreeSync/G-Sync compatibility and USB-C connectivity.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">165Hz IPS</span>
+                                <span class="spec-tag">1440p</span>
+                                <span class="spec-tag">USB-C</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>449.99</div>
+                            <button class="product-btn" onclick="openProductModal('ViewSonic Elite XG270QG')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+
+                        <!-- LG UltraGear OLED -->
+                        <div class="product-card scroll-reveal">
+                            <div class="product-image-gallery">
+                                <div class="gallery-main">
+                                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop" alt="LG UltraGear OLED - Front" loading="lazy">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumb active" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100"></div>
+<div class="gallery-thumb" onclick="changeGallery(this)"><img src="https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=100"></div>
+                                </div>
+                                <button class="gallery-nav gallery-prev" onclick="prevGallery(this)">❮</button>
+                                <button class="gallery-nav gallery-next" onclick="nextGallery(this)">❯</button>
+                            </div>
+                            <h3 class="product-name">LG UltraGear OLED</h3>
+                            <p class="product-desc">32" 240Hz OLED with 0.03ms response time. Perfect blacks and vivid colors with G-Sync support.</p>
+                            <div class="product-specs">
+                                <span class="spec-tag">240Hz OLED</span>
+                                <span class="spec-tag">1440p</span>
+                                <span class="spec-tag">0.03ms</span>
+                            </div>
+                            <div class="product-price"><span class="currency">$</span>1,299.99</div>
+                            <button class="product-btn" onclick="openProductModal('LG UltraGear OLED')">View Details</button><button class="product-btn" onclick="addToCart()">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features-wrap">
+        <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+            <p class="hero-eyebrow" style="margin-bottom:0.5rem;">// Why NexGear //</p>
+            <h2 class="section-title">Built for <span class="accent">Performance</span></h2>
+            <div class="section-line"></div>
+            <div class="features-grid" style="margin-top:3rem;">
+                <div class="feature-item scroll-reveal">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-text">Ultra-responsive hardware for competitive advantage in every match.</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <span class="feature-icon">🛡️</span>
+                    <h3 class="feature-title">Durability Tested</h3>
+                    <p class="feature-text">Built to withstand 10,000+ hours of intense gaming sessions.</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <span class="feature-icon">🎨</span>
+                    <h3 class="feature-title">Custom RGB</h3>
+                    <p class="feature-text">Fully programmable lighting to match your personal gaming setup.</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <span class="feature-icon">💪</span>
+                    <h3 class="feature-title">Ergonomic</h3>
+                    <p class="feature-text">Extended comfort for marathon sessions without fatigue.</p>
+                </div>
+                <div class="feature-item scroll-reveal">
+                    <span class="feature-icon">🌍</span>
+                    <h3 class="feature-title">Global Support</h3>
+                    <p class="feature-text">24/7 customer support in 15+ languages worldwide.</p>
+                </div>
+                <div class="feature-item scroll-reveal" style="border-right:none;">
+                    <span class="feature-icon">🔧</span>
+                    <h3 class="feature-title">Plug & Play</h3>
+                    <p class="feature-text">Zero software required. Works out of the box on all platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews">
+        <div class="section">
+            <p class="hero-eyebrow" style="margin-bottom:0.5rem;">// Community //</p>
+            <h2 class="section-title">What Gamers <span class="accent">Say</span></h2>
+            <div class="section-line"></div>
+            <p class="section-sub">Real feedback from real players</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-reveal">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">NexGear keyboards completely changed my gameplay. The response time is insane — finally hitting those clutch moments every time.</p>
+                    <p class="testimonial-author">— Alex Chen, Pro Esports Player</p>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">The build quality is absolutely premium. My whole setup looks incredible. Worth every single penny — no compromises anywhere.</p>
+                    <p class="testimonial-author">— Jordan Rivera, Content Creator</p>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">Best investment I've made in gaming gear. Customer service is lightning fast too. Will never go back to any other brand.</p>
+                    <p class="testimonial-author">— Sam Williams, Competitive Gamer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-text">NEX<span>GEAR</span></span>
+                    <p>Premium gaming accessories crafted for champions. From keyboards to headsets — engineered for those who refuse to lose.</p>
+                    <div class="social-icons">
+                        <div class="social-icon">f</div>
+                        <div class="social-icon">𝕏</div>
+                        <div class="social-icon">in</div>
+                        <div class="social-icon">▶</div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="#keyboards">Keyboards</a>
+                    <a href="#mice">MOUSE</a>
+                    <a href="#headphones">Headphones</a>
+                    <a href="#monitors">Monitors</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">FAQs</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Shipping</a>
+                    <a href="#">Returns</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexGear Gaming. All rights reserved.</p>
+                <p style="color:var(--red);">// Crafted for champions //</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalProductName"></h2>
+                    <div class="modal-price-section">
+                        <span class="modal-price"><span class="currency">$</span><span id="modalProductPrice"></span></span>
+                        <span class="modal-rating">★★★★★ (450+ Reviews)</span>
+                    </div>
+                    <p id="modalProductDesc" class="modal-description"></p>
+                    <div class="modal-specs" id="modalProductSpecs"></div>
+                    
+                    <div class="modal-features">
+                        <h3>Key Features</h3>
+                        <ul id="modalFeatures"></ul>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn-add-cart">Add to Cart</button>
+                        <button class="btn-buy-now">Buy Now</button>
+                    </div>
+
+                    <div class="modal-shipping">
+                        <p>✓ Free Shipping on orders over $50</p>
+                        <p>✓ 2-Year Warranty Included</p>
+                        <p>✓ 30-Day Money Back Guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<div class="login-modal" id="loginModal">
+<div class="login-box">
+<h2 style="color:white">User Login</h2>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button class="product-btn" onclick="loginUser()">Login</button>
+<button class="product-btn" onclick="closeLogin()">Close</button>
+</div></div>
+
+<!-- CART MODAL -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h2>Shopping Cart</h2>
+            <button class="modal-close" onclick="closeCart()">✕</button>
+        </div>
+        <div class="cart-modal-body" id="cartBody">
+            <p style="color: #e6e6e6; text-align: center; padding: 2rem;">Your cart is empty</p>
+        </div>
+        <div class="cart-modal-footer">
+            <button class="cart-checkout-btn" onclick="alert('Proceeding to checkout...')">Checkout</button>
+            <button class="cart-clear-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
+</div>
+
+<script>
+        // ===== PRODUCT DETAILS MODAL =====
+        const productDetails = {
+            'Razer Huntsman': {
+                price: '199.99',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBOJ5JiTB7cQ1kaAU7KAy0lU5pCFXC6Lksyk2qvg_HSSl3afr6xQL7su-X&s=10',
+                description: 'Ultra-fast clicky switches with 1.0mm actuation point for responsive gaming. RGB lighting with unlimited customization. The Razer Huntsman is engineered for competitive gamers who demand lightning-fast response times.',
+                specs: ['Optical', '1ms Response', 'RGB Lighting', '60% Layout', 'Mechanical'],
+                features: [
+                    'Razer Optical Switches with 1.0mm actuation point',
+                    'Per-key RGB lighting customization',
+                    'Programmable macro keys',
+                    'USB wired connection with 1000Hz polling rate',
+                    'Compact 60% design for portability',
+                    'Aluminum frame for durability',
+                    '2-year limited hardware warranty'
+                ]
+            },
+            'SteelSeries Apex Pro': {
+                price: '229.99',
+                image: 'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25637238/apex_pro_tkl_gen_3_black_context_hero.png?quality=90&w=400&h=400&fit=crop',
+                description: 'Premium mechanical keyboard with adjustable actuation. Per-key RGB and proven esports pedigree. Trusted by professional esports teams worldwide for tournament-level performance.',
+                specs: ['Mechanical', 'Adjustable', 'Pro Tested', 'Per-Key RGB', 'Full Size'],
+                features: [
+                    'SteelSeries adjustable mechanical switches (1.5-3.6mm actuation)',
+                    'Per-key RGB illumination',
+                    'Tournament-grade build quality',
+                    'Magnetic buttons for macro programming',
+                    'Wired USB connection',
+                    'IP54 spill resistance',
+                    'Lifetime hardware warranty'
+                ]
+            },
+            'ASUS ROG Strix Scope': {
+                price: '189.99',
+                image: 'https://images.unsplash.com/photo-1587873882287-04a56c3eeafb?w=400&h=400&fit=crop',
+                description: 'Competition-grade mechanical keyboard with stabilizer-equipped spacebar. Cherry MX switches with aura sync lighting for seamless ecosystem integration.',
+                specs: ['Cherry MX', 'Stabilized', 'Aura Sync', 'Tournament Grade', 'Aluminum'],
+                features: [
+                    'Cherry MX mechanical switches (multiple variants available)',
+                    'Stabilized spacebar for consistency',
+                    'ASUS Aura Sync RGB lighting',
+                    'FN key macro programming',
+                    'Aluminum top plate',
+                    'Tournament-proven reliability',
+                    'Smart case included'
+                ]
+            },
+            'Razer DeathAdder V3': {
+                price: '129.99',
+                image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                description: 'Ultra-lightweight ergonomic gaming mouse. Hyperspeed wireless with 90-hour battery and 30k DPI sensor. Perfect for competitive gaming at the highest levels.',
+                specs: ['63g Weight', '90h Battery', '30k DPI', 'Wireless', 'Ergonomic'],
+                features: [
+                    'HyperSpeed Wireless Technology',
+                    'Razer Focus Pro 30K Sensor',
+                    '90-hour rechargeable battery',
+                    'Focus Pro Sensor with 99.6% motion accuracy',
+                    '8 programmable buttons',
+                    'Dual wireless connectivity',
+                    'Lifetime hardware warranty'
+                ]
+            },
+            'SteelSeries Rival 5': {
+                price: '79.99',
+                image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                description: 'Ergonomic right-handed mouse with 18k CPI sensor. OLED display and programmable buttons for competitive advantage. Built for pro gamers on a budget.',
+                specs: ['18k CPI', 'OLED Display', 'Wired', 'Programmable', 'Right-Handed'],
+                features: [
+                    'TrueMove Core 18000 CPI Sensor',
+                    'OLED screen for settings display',
+                    '7 programmable buttons',
+                    'Ergonomic right-handed design',
+                    'Wired USB connection',
+                    'SteelSeries Engine software compatible',
+                    '2-year hardware warranty'
+                ]
+            },
+            'ASUS ROG Chakram Core': {
+                price: '59.99',
+                image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                description: 'Hybrid gaming mouse with wired + wireless modes. Joystick-like thumbstick with 16k DPI sensor and AuraSync. Unique design for competitive play.',
+                specs: ['Hybrid', '16k DPI', 'Joystick', 'Aura Sync', 'Lightweight'],
+                features: [
+                    'Hybrid wired/wireless connectivity',
+                    'Dual 18k DPI sensor',
+                    'Unique joystick-like thumbstick control',
+                    'ASUS Aura Sync RGB lighting',
+                    '7 programmable buttons',
+                    'Ambidextrous design',
+                    '2-year warranty'
+                ]
+            },
+            'SteelSeries Arctis 9': {
+                price: '349.99',
+                image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                description: 'Dual wireless headset for PC + PlayStation. Noise-cancelling mic and 30-hour battery. ChatMix dial for perfect balance between game and chat.',
+                specs: ['Dual Wireless', '30h Battery', 'Noise Cancel', 'Surround 7.1', 'Mic'],
+                features: [
+                    'Dual wireless (2.4GHz USB + Bluetooth)',
+                    '30-hour rechargeable battery',
+                    'ClearCast bidirectional noise-cancelling mic',
+                    'ChatMix dial for game/chat balance',
+                    'Dolby 7.1 surround sound',
+                    'Ski goggle suspension headband',
+                    '2-year warranty'
+                ]
+            },
+            'Razer Barracuda Pro': {
+                price: '299.99',
+                image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                description: 'Lightweight wireless with ultra-low latency 2.4GHz connection. Immersive sound and 50-hour battery life. Perfect for all-day gaming.',
+                specs: ['2.4GHz Wireless', '50h Battery', '210g', 'Lightweight', 'Low Latency'],
+                features: [
+                    'Ultra-low latency 2.4GHz wireless',
+                    '50-hour rechargeable battery',
+                    'Lightweight design at 210g',
+                    'Razer TriForce 50mm drivers',
+                    'Detachable noise-isolating mic',
+                    'Multi-platform compatibility',
+                    'Lifetime hardware warranty'
+                ]
+            },
+            'Audeze Maxwell': {
+                price: '299.99',
+                image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                description: 'Audiophile-grade planar magnetic gaming headset with low-latency 2.4GHz wireless and 80h battery. Studio-quality sound for gaming.',
+                specs: ['Planar Mag', '80h Battery', '2.4GHz', 'Audiophile', 'Planar'],
+                features: [
+                    'Planar magnetic drivers for pristine audio',
+                    'Ultra-low latency 2.4GHz wireless',
+                    '80-hour battery life (record-breaking)',
+                    'Suspension headband design',
+                    'Detachable cardioid microphone',
+                    'Unimorph ear pads for comfort',
+                    '2-year warranty'
+                ]
+            },
+            'ASUS ROG Swift 360Hz': {
+                price: '799.99',
+                image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                description: '27" 360Hz IPS panel with DisplayHDR 600. NVIDIA G-Sync and AuraSync lighting for ultimate competitive edge. Pro esports monitor.',
+                specs: ['360Hz IPS', '1440p', 'G-Sync', 'HDR 600', '27"'],
+                features: [
+                    '27-inch IPS panel with 360Hz refresh rate',
+                    '1440p resolution for sharp visuals',
+                    'NVIDIA G-Sync certified',
+                    'DisplayHDR 600 for vivid colors',
+                    '1ms response time',
+                    'ASUS Aura sync RGB',
+                    'USB 3.0 hub included'
+                ]
+            },
+            'ViewSonic Elite XG270QG': {
+                price: '449.99',
+                image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                description: '27" 165Hz IPS gaming monitor. 1ms response time with FreeSync/G-Sync compatibility and USB-C connectivity. Professional gaming monitor.',
+                specs: ['165Hz IPS', '1440p', '1ms Response', 'USB-C', 'Certified'],
+                features: [
+                    '27-inch IPS panel with 165Hz refresh rate',
+                    '1440p QHD resolution',
+                    '1ms response time',
+                    'FreeSync & G-Sync compatible',
+                    'USB-C connection with power delivery',
+                    'Picture-by-picture mode',
+                    '3-year warranty'
+                ]
+            },
+            'LG UltraGear OLED': {
+                price: '1299.99',
+                image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                description: '32" 240Hz OLED with 0.03ms response time. Perfect blacks and vivid colors with G-Sync support. Ultimate gaming monitor.',
+                specs: ['240Hz OLED', '1440p', '0.03ms', 'Perfect Black', 'Premium'],
+                features: [
+                    '32-inch OLED display with 240Hz refresh rate',
+                    '1440p resolution on massive screen',
+                    '0.03ms response time (industry leading)',
+                    'NVIDIA G-Sync compatible',
+                    'OLED brightness peak at 200 nits',
+                    'DisplayPort 2.1 connectivity',
+                    '3-year warranty with free shipping'
+                ]
+            }
+        };
+
+        function openProductModal(productName) {
+            const product = productDetails[productName];
+            if (!product) return;
+
+            document.getElementById('modalProductName').textContent = productName;
+            document.getElementById('modalProductPrice').textContent = product.price;
+            document.getElementById('modalProductImage').src = product.image;
+            document.getElementById('modalProductDesc').textContent = product.description;
+
+            // Add specs
+            const specsHtml = product.specs.map(spec => 
+                `<span class="spec-tag">${spec}</span>`
+            ).join('');
+            document.getElementById('modalProductSpecs').innerHTML = specsHtml;
+
+            // Add features
+            const featuresHtml = product.features.map(feature => 
+                `<li>${feature}</li>`
+            ).join('');
+            document.getElementById('modalFeatures').innerHTML = featuresHtml;
+
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
+
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if(href.startsWith('#')) {
+                    e.preventDefault();
+                    const sectionId = href.substring(1);
+                    navigateTo(sectionId);
+                }
+                hamburgerBtn.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===== CATEGORY TABS =====
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.product-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+
+                tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+                tabPanels.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                document.getElementById('tab-' + target).classList.add('active');
+
+                document.querySelectorAll('#tab-' + target + ' .scroll-reveal').forEach(el => {
+                    observer.observe(el);
+                });
+            });
+        });
+
+        // ===== IMAGE GALLERY FUNCTIONALITY =====
+        const galleryImages = {
+            'Razer Huntsman': [
+                './razer-huntsman-1.png',
+                './razer-huntsman-2.png',
+                './razer-huntsman-3.png'
+            ],
+            'SteelSeries Apex Pro': [
+                'https://share.google/ciLk4g6umMtGcBFZr',
+                'https://share.google/upgE2tuV7StCURUAR',
+                'https://share.google/qVeDtHmd8le9LlQTH'
+            ],
+            'ASUS ROG Strix Scope': [
+                'https://images.unsplash.com/photo-1587873882287-04a56c3eeafb?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1595225476933-018acacba519?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1578992894631-058c8e677a7f?w=400&h=400&fit=crop'
+            ],
+            'Razer DeathAdder V3': [
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop'
+            ],
+            'SteelSeries Rival 5': [
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop'
+            ],
+            'ASUS ROG Chakram Core': [
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop'
+            ],
+            'SteelSeries Arctis 9': [
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop'
+            ],
+            'Razer Barracuda Pro': [
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop'
+            ],
+            'Audeze Maxwell': [
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400&h=400&fit=crop'
+            ],
+            'ASUS ROG Swift 360Hz': [
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop'
+            ],
+            'ViewSonic Elite XG270QG': [
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop'
+            ],
+            'LG UltraGear OLED': [
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop'
+            ]
+        };
+
+        function changeGallery(thumb) {
+            const gallery = thumb.closest('.product-image-gallery');
+            const thumbs = gallery.querySelectorAll('.gallery-thumb');
+            const img = gallery.querySelector('.gallery-main img');
+            const productName = thumb.closest('.product-card').querySelector('.product-name').textContent;
+            const imageIndex = Array.from(thumbs).indexOf(thumb);
+
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+
+            if (galleryImages[productName]) {
+                img.src = galleryImages[productName][imageIndex];
+            }
+        }
+
+        function nextGallery(btn) {
+            const gallery = btn.closest('.product-image-gallery');
+            const thumbs = Array.from(gallery.querySelectorAll('.gallery-thumb'));
+            const activeIndex = thumbs.findIndex(t => t.classList.contains('active'));
+            const nextIndex = (activeIndex + 1) % thumbs.length;
+            changeGallery(thumbs[nextIndex]);
+        }
+
+        function prevGallery(btn) {
+            const gallery = btn.closest('.product-image-gallery');
+            const thumbs = Array.from(gallery.querySelectorAll('.gallery-thumb'));
+            const activeIndex = thumbs.findIndex(t => t.classList.contains('active'));
+            const prevIndex = (activeIndex - 1 + thumbs.length) % thumbs.length;
+            changeGallery(thumbs[prevIndex]);
+        }
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // ===== HEADER HIDE ON SCROLL =====
+        let lastY = 0;
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            const y = window.pageYOffset;
+            header.style.transform = (y > lastY && y > 80) ? 'translateY(-100%)' : 'translateY(0)';
+            lastY = y <= 0 ? 0 : y;
+        });
+
+        // ===== CARD TILT (desktop only) =====
+        if (window.matchMedia('(pointer: fine)').matches) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    card.style.transform = `translateX(4px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+    
+let cartItems = [];
+let cartCount = 0;
+
+function addToCart(event) {
+    // Get product card from button
+    const button = event.target;
+    const productCard = button.closest('.product-card');
+    
+    if(productCard) {
+        const productName = productCard.querySelector('.product-name').textContent;
+        const productPrice = productCard.querySelector('.product-price').textContent.trim();
+        const productImage = productCard.querySelector('.gallery-main img').src;
+        
+        // Check if item already exists
+        const existingItem = cartItems.find(item => item.name === productName);
+        
+        if(existingItem) {
+            existingItem.quantity++;
+        } else {
+            cartItems.push({
+                name: productName,
+                price: productPrice,
+                image: productImage,
+                quantity: 1
+            });
+        }
+        
+        cartCount++;
+        document.getElementById('cartCount').innerText = cartCount;
+        alert(productName + ' added to cart!');
+        updateCartDisplay();
+    }
+}
+
+function openCart() {
+    document.getElementById('cartModal').style.display = 'flex';
+    updateCartDisplay();
+}
+
+function closeCart() {
+    document.getElementById('cartModal').style.display = 'none';
+}
+
+function updateCartDisplay() {
+    const cartBody = document.getElementById('cartBody');
+    let totalPrice = 0;
+    
+    if(cartItems.length === 0) {
+        cartBody.innerHTML = '<p style="color: #e6e6e6; text-align: center; padding: 2rem;">Your cart is empty</p>';
+        return;
+    }
+    
+    let html = '';
+    cartItems.forEach((item, index) => {
+        const price = parseFloat(item.price.replace('$', '').replace('₹', ''));
+        const itemTotal = price * item.quantity;
+        totalPrice += itemTotal;
+        
+        html += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h4>${item.name}</h4>
+                    <p class="cart-item-price">${item.price}</p>
+                </div>
+                <div class="cart-item-quantity">
+                    <button onclick="decreaseQuantity(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQuantity(${index})">+</button>
+                </div>
+                <button class="cart-remove-btn" onclick="removeFromCart(${index})">✕</button>
+            </div>
+        `;
+    });
+    
+    html += `<div class="cart-total"><strong>Total: $${totalPrice.toFixed(2)}</strong></div>`;
+    cartBody.innerHTML = html;
+}
+
+function removeFromCart(index) {
+    if(cartItems[index]) {
+        cartCount -= cartItems[index].quantity;
+        cartItems.splice(index, 1);
+        document.getElementById('cartCount').innerText = cartCount;
+        updateCartDisplay();
+    }
+}
+
+function increaseQuantity(index) {
+    if(cartItems[index]) {
+        cartItems[index].quantity++;
+        cartCount++;
+        document.getElementById('cartCount').innerText = cartCount;
+        updateCartDisplay();
+    }
+}
+
+function decreaseQuantity(index) {
+    if(cartItems[index] && cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+        cartCount--;
+        document.getElementById('cartCount').innerText = cartCount;
+        updateCartDisplay();
+    }
+}
+
+function clearCart() {
+    if(confirm('Are you sure you want to clear the cart?')) {
+        cartItems = [];
+        cartCount = 0;
+        document.getElementById('cartCount').innerText = '0';
+        updateCartDisplay();
+    }
+}
+function openLogin(){document.getElementById('loginModal').style.display='flex';}
+function closeLogin(){document.getElementById('loginModal').style.display='none';}
+function loginUser(){
+ let e=document.getElementById('email').value;
+ let p=document.getElementById('password').value;
+ if(e && p){
+ localStorage.setItem('userEmail',e);
+ alert('Login successful');
+ closeLogin();
+ }else{alert('Enter all fields');}
+}
+
+// Navigation handlers
+function navigateTo(sectionId) {
+    const element = document.getElementById(sectionId);
+    if(element) {
+        element.scrollIntoView({behavior: 'smooth'});
+    }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+    // Add click handlers to nav links
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if(href.startsWith('#')) {
+                e.preventDefault();
+                const sectionId = href.substring(1);
+                navigateTo(sectionId);
+            }
+        });
+    });
+    
+    // Cart button - open cart modal
+    const cartBtn = document.getElementById('cartBtn');
+    if(cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            openCart();
+        });
+    }
+    
+    // Add to Cart buttons - attach proper event listeners
+    document.querySelectorAll('.product-btn').forEach(btn => {
+        if(btn.textContent.includes('Add To Cart')) {
+            btn.addEventListener('click', function(e) {
+                addToCart(e);
+            });
+            // Remove inline onclick if it exists
+            btn.onclick = null;
+        }
+    });
+});
+</script>
+</body>
+</html>
